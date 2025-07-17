@@ -1,0 +1,9 @@
+from pydub import AudioSegment
+
+input_path = "C:\Users\Aryan\OneDrive\Desktop\drdo\NemoModel\my_audio\TOEFL Listening Practice Test.mp3"
+output_path = "C:\Users\Aryan\OneDrive\Desktop\drdo\NemoModel\my_audio\output.wav"
+
+sound = AudioSegment.from_mp3(input_path)
+sound.export(output_path, format="wav")
+
+print("✅ Converted and saved to:", output_path)

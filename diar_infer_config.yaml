@@ -1,0 +1,32 @@
+device: cpu
+diarizer:
+  manifest_filepath: manifest.json
+  out_dir: diarization_outputs
+  vad:
+    model_path: vad_multilingual_marblenet
+    parameters:
+      threshold: 0.5
+      min_duration_on: 0.3
+      min_duration_off: 0.2
+      padding_onset: 0.1
+      padding_offset: 0.1
+  speaker_embeddings:
+    model_path: ecapa_tdnn
+    parameters:
+      window_length_in_sec: 1.5
+      shift_length_in_sec: 0.75
+  msdd_model:
+    model_path: msdd_telephonic
+    parameters:
+      overlap_threshold: 0.5
+      diar_window_length:
+      - 1.5
+      infer_batch_size: 32
+      seq_eval_mode: true
+  clustering:
+    parameters:
+      oracle_num_speakers: false
+      max_num_speakers: 2
+      scale_cluster_threshold: 1.0
+      scale_window_length:
+      - 1.5
